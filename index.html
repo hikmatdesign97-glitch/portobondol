@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Agus Suryana</title>
+
+<style>
+:root{
+  --bg:#020617;
+  --glass:rgba(15,23,42,.65);
+  --border:rgba(148,163,184,.15);
+  --primary:#22c55e;
+  --secondary:#3b82f6;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  background:radial-gradient(1200px 600px at top,#0f172a,#020617);
+  color:var(--text);
+  line-height:1.7;
+}
+
+/* ================= HEADER ================= */
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,#22c55e33,transparent 40%),
+    radial-gradient(circle at 80% 30%,#3b82f633,transparent 40%);
+}
+header .hero{
+  position:relative;
+  z-index:1;
+}
+header h1{
+  font-size:clamp(40px,6vw,72px);
+  font-weight:900;
+  letter-spacing:-1px;
+}
+header p{
+  margin-top:14px;
+  font-size:18px;
+  color:var(--muted);
+}
+header .badge{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--secondary),var(--primary));
+  font-size:13px;
+  font-weight:600;
+}
+
+/* ================= NAV ================= */
+nav{
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(12px);
+  background:rgba(2,6,23,.75);
+  border-bottom:1px solid var(--border);
+  z-index:50;
+}
+nav ul{
+  display:flex;
+  justify-content:center;
+  gap:34px;
+  padding:16px;
+  list-style:none;
+}
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-6px;
+  width:0;height:2px;
+  background:var(--primary);
+  transition:.3s;
+}
+nav a:hover::after{width:100%}
+
+/* ================= SECTION ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:100px 20px;
+}
+section h2{
+  text-align:center;
+  font-size:clamp(28px,4vw,38px);
+  margin-bottom:12px;
+}
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:60px;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
+
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  backdrop-filter:blur(14px);
+  transition:transform .5s, box-shadow .5s;
+}
+.card:hover{
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+
+.card img,
+.card video{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+
+.card .content{
+  padding:18px;
+  font-weight:600;
+  text-align:center;
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  text-align:center;
+  font-size:18px;
+}
+.contact a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
+.contact a:hover{text-decoration:underline}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.35s;
+  z-index:999;
+}
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+.lightbox img{
+  max-width:92%;
+  max-height:92%;
+  border-radius:18px;
+}
+.lightbox span{
+  position:absolute;
+  top:28px;
+  right:36px;
+  font-size:42px;
+  cursor:pointer;
+}
+
+/* ================= ANIMATION ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero reveal">
+    <span class="badge">PORTFOLIO</span>
+    <h1>Agus Suryana</h1>
+    <p>Digital Marketing • Branding • Social Media Specialist</p>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+</nav>
+
+<section id="design" class="reveal">
+  <h2>Portfolio Design</h2>
+  <p class="subtitle">Klik gambar untuk tampilan penuh</p>
+  <div class="grid">
+    <div class="card"><img src="design1.jpeg"><div class="content">Design 1</div></div>
+    <div class="card"><img src="design2.jpeg"><div class="content">Design 2</div></div>
+    <div class="card"><img src="design3.jpeg"><div class="content">Design 3</div></div>
+    <div class="card"><img src="design4.jpeg"><div class="content">Design 4</div></div>
+    <div class="card"><img src="design5.jpeg"><div class="content">Design 5</div></div>
+  </div>
+</section>
+
+<section id="video" class="reveal">
+  <h2>Portfolio Video</h2>
+  <p class="subtitle">Video promosi & konten kreatif</p>
+  <div class="grid">
+      <div class="card"><video src="vidio1.mp4" controls></video></div>
+      <div class="card"><video src="vidio2.mp4" controls></video></div>
+      <div class="card"><video src="vidio3.mp4" controls></video></div>
+      <div class="card"><video src="vidio4.mp4" controls></video></div>
+      <div class="card"><video src="vidio5.mp4" controls></video></div>
+      <div class="card"><video src="vidio6.mp4" controls></video></div>
+      <div class="card"><video src="vidio7.mp4" controls></video></div>
+      <div class="card"><video src="vidio8.mp4" controls></video></div>
+      <div class="card"><video src="vidio9.mp4" controls></video></div>
+      <div class="card"><video src="vidio10.mp4" controls></video></div>
+      <div class="card"><video src="vidio11.mp4" controls></video></div>
+      <div class="card"><video src="vidio12.mp4" controls></video></div>
+
+
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>Kontak</h2>
+  <p class="contact">
+    WhatsApp: <a href="https://wa.me/6281296642731">+62 812-9664-2731</a><br>
+    Instagram: <a href="https://instagram.com/IT_Tng">@IT_Tng</a>
+  </p>
+</section>
+
+<footer>
+  © 2026 Agus Suryana • All Rights Reserved
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span id="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script>
+/* Lightbox */
+const lightbox=document.getElementById('lightbox');
+const imgBox=document.getElementById('lightbox-img');
+
+document.querySelectorAll('.card img').forEach(img=>{
+  img.onclick=()=>{
+    lightbox.classList.add('active');
+    imgBox.src=img.src;
+  }
+});
+document.getElementById('close').onclick=()=>lightbox.classList.remove('active');
+lightbox.onclick=e=>{if(e.target===lightbox)lightbox.classList.remove('active')};
+
+/* Scroll reveal */
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.15});
+reveals.forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
